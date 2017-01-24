@@ -1,0 +1,23 @@
+<%- include ../include/header.html%>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4>新型的我必将辉煌</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <%
+                        vues.forEach(function (vue){%>
+                        <li class="list-group-item">
+                            <a href="<%=vue.url%>"><%=vue.name%></a>
+                        </li>
+                        <%})%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../include/footer.html%>

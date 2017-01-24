@@ -1,0 +1,30 @@
+<%- include  include/header.html%>
+<style>
+
+</style>
+<div class="box">
+    <div class="content">
+        Welcome to My Blog
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <%articles.forEach(function (article){%>
+        <div class="media">
+            <div class="media-body">
+                <h4 class="media-heading">
+                    <a href="/article/detail/<%=article._id%>">
+                        <img src="<%=article.user.avatar%>" class="img">
+                    </a>
+                    <a href="/article/detail/<%=article._id%>"><%=article.title%></a>
+                </h4>
+                <p><%=article.content%></p>
+                <p>
+                    作者：<%=article.user.username%> | 时间：<%=article.createTime%>
+                </p>
+            </div>
+        </div>
+        <%})%>
+    </div>
+</div>
+<%- include  include/footer.html%>

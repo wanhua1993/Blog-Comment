@@ -1,0 +1,23 @@
+<!--
+<%- include ../article/detail.html%>
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4>评论留言</h4>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <%
+                        comment.forEach(function (item){%>
+                        <li class="list-group-item">
+                            <%=item.content%>
+                            <p><%- item.createTime%></p>
+                        </li>
+                        <%})%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include ../include/footer.html%>-->

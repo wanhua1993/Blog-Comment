@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="../../public/lib/bootstrap/dist/css/bootstrap.css">-->
+    <style>
+        body {
+            background-color: #8c8c8c;
+            font-size: 18px;
+            font-family: "Arial Rounded MT Bold";
+        }
+
+        .navbar-header {
+            text-align: center;
+        }
+
+        .navbar-inverse {
+            background-color: #122b40;
+        }
+
+        .navbar-brand {
+            font-size: 26px;
+        }
+
+        .content {
+            width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            height: 140px;
+            line-height: 140px;
+            font-size: 46px;
+        }
+
+        .content div {
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .search {
+            margin-top: 14px;
+            padding-left: 5px;
+            height: 25px;
+            width: 200px;
+            border-radius: 6px;
+            background-color: #122b40;
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .button {
+            width: 52px;
+            margin-top: 14px;
+            height: 25px;
+            border-radius: 6px;
+            background-color: #122b40;
+            color: #f8f8f8;
+            font-size: 14px;
+        }
+
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid container">
+        <div class="navbar-header">
+            <a class="navbar-brand">My Blog</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">首页</a></li>
+                <%if(user){%>
+                <li><a href="/article/add">发表文章</a></li>
+                <%}%>
+            </ul>
+        </div>
+        <div class="pull-right">
+            <ul class="nav navbar-nav">
+                <%if(user){%>
+                <li><a href="/user/signout">退出</a></li>
+                <%}else{%>
+                <li><a href="/user/signup">注册</a></li>
+                <li><a href="/user/signin">登录</a></li>
+                <%}%>
+            </ul>
+            <%if(user){%>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="">
+                    <img class="img" src="<%=user.avatar%>">
+                    <%=user.username%>
+                </a></li>
+            </ul>
+            <%}%>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="/vue">vue</a></li>
+                <li><a href="/node">node</a></li>
+                <li><a href="/js">javascript</a></li>
+                <li><a href="/html">html</a></li>
+                <li><a href="/weiChat">weiChat</a></li>
+            </ul>
+            <form method="post" action="/search" class="pull-right">
+                <input type="text" class="search" name="title" id="title">
+                <!--<button class="button">搜索</button>-->
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <%if(success){%>
+    <div class="alert alert-success text-center" role="alert">
+        <%=success%>
+    </div>
+    <%}%>
+    <%if(error){%>
+    <div class="alert alert-danger text-center" role="alert">
+        <%=error%>
+    </div>
+    <%}%>

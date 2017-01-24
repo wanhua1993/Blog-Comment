@@ -1,0 +1,61 @@
+<%- include ../include/header.html%>
+<style>
+    .btn-primary {
+        margin-top: 10px;
+        margin-left: 350px;
+    }
+    .com{
+        margin-top: 5px;
+        font-size: 14px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: right;
+    }
+    .clear{
+        padding-bottom: 0;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-offset-2 col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <%=article.title%>  作者：<%- article.name%>
+            </div>
+            <div class="panel-body">
+                <%-article.content%>
+            </div>
+            <%if(user && user._id == article.user){%>
+            <div class="panel-footer">
+                <a href="/article/update/<%=article._id%>" class="btn btn-warning">修改</a>
+                <a href="/article/delete/<%=article._id%>" class="btn btn-danger">删除</a>
+            </div>
+            <%}%>
+            <form action="/comment/<%=article._id%>/add" method="post">
+            <div class="form-group">
+                <input value="" type="text" class="form-control" name="title" id="title">
+                <button class="btn btn-primary">评论</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-offset-2 col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>评论留言</h4>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <%
+                    comment.forEach(function (item){%>
+                    <li class="list-group-item clear">
+                        <%=item.content%>
+                        <p class="com "><img src="<%= item.avatar%>"> <%=item.name%>  |  <%- item.createTime%></p>
+                    </li>
+                    <%})%>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../include/footer.html%>
